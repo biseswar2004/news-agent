@@ -47,51 +47,90 @@
 
 ---
 
+# 🎙️ The News Agent
+
+> AI-powered personalised morning news briefing agent.
+
+---
+
 # 📁 Project Structure
 
-```bash
+```text
 news-agent/
-├── app.py              # Flask web server — all routes
-├── main.py             # Master pipeline runner
-├── scraper.py          # Fetches news from RSS + NewsAPI
-├── summariser.py       # Gemini/Groq AI script generator
-├── tts.py              # Text to speech MP3 converter
-├── delivery.py         # Telegram bot delivery
-├── scheduler.py        # Daily 7AM auto-scheduler
-├── database.py         # SQLite database models + queries
-├── templates/          # HTML pages
-│   ├── base.html       # Shared layout + navbar + footer
-│   ├── index.html      # Dashboard — today's briefing
-│   ├── history.html    # All past briefings
-│   ├── settings.html   # User preferences
-│   └── logs.html       # Agent run logs
+├── app.py
+├── main.py
+├── scraper.py
+├── summariser.py
+├── tts.py
+├── delivery.py
+├── scheduler.py
+├── database.py
+│
+├── templates/
+│   ├── base.html
+│   ├── index.html
+│   ├── history.html
+│   ├── settings.html
+│   └── logs.html
+│
 ├── static/
-│   ├── css/style.css   # Full dashboard styling
-│   └── js/main.js      # JavaScript — run, save, copy
-├── audio/              # Generated MP3 files
-├── .env                # API keys (never upload this)
-├── requirements.txt    # Python dependencies
-└── Procfile            # Render deployment config
+│   ├── css/style.css
+│   └── js/main.js
+│
+├── audio/
+├── .env
+├── requirements.txt
+└── Procfile
+```
 
+---
 
-🚀 How to Run Locally
-1. Clone the repository
+# 🚀 How to Run Locally
+
+## Step 1 -- Clone the repository
+
+```bash
 git clone https://github.com/biseswar2004/news-agent.git
 cd news-agent
+```
 
-2. Create virtual environment
+---
+
+## Step 2 -- Create virtual environment
+
+```bash
 python -m venv venv
+```
 
-3. Activate virtual environment
-Windows
+---
+
+## Step 3 -- Activate virtual environment
+
+### Windows
+
+```bash
 venv\Scripts\activate
-Linux / Mac
+```
+
+### Linux / Mac
+
+```bash
 source venv/bin/activate
+```
 
-4. Install dependencies
+---
+
+## Step 4 -- Install dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
-5. Create .env file
+---
+
+## Step 5 -- Create `.env` file
+
+```env
 GEMINI_API_KEY=your_gemini_key
 GROQ_API_KEY=your_groq_key
 NEWS_API_KEY=your_newsapi_key
@@ -99,25 +138,54 @@ TELEGRAM_BOT_TOKEN=your_bot_token
 TELEGRAM_CHAT_ID=your_chat_id
 YOUR_NAME=Your Name
 YOUR_TOPICS=AI,cricket,India tech,startups
+```
 
-6. Run the Flask app
+---
+
+## Step 6 -- Run the Flask app
+
+```bash
 python app.py
+```
+
 Open in browser:
+
+```text
 http://localhost:5000
+```
 
-7. Run full pipeline manually
+---
+
+## Step 7 -- Run full pipeline manually
+
+```bash
 python main.py
+```
 
-8. Run scheduler
+---
+
+## Step 8 -- Run scheduler
+
+```bash
 python scheduler.py
-🔑 Free API Keys
-Service	Website
-Gemini AI	https://aistudio.google.com
-Groq	https://console.groq.com
-NewsAPI	https://newsapi.org
-Telegram Bot	https://telegram.me/BotFather
+```
 
-🧠 How It Works
+---
+
+# 🔑 Free API Keys
+
+| Service | Website |
+|---|---|
+| Gemini AI | https://aistudio.google.com |
+| Groq | https://console.groq.com |
+| NewsAPI | https://newsapi.org |
+| Telegram Bot | https://telegram.me/BotFather |
+
+---
+
+# 🧠 How It Works
+
+```text
 Scheduler starts automatically
         ↓
 Fetches news from multiple sources
@@ -131,9 +199,12 @@ gTTS converts script to MP3
 Telegram bot sends briefing
         ↓
 User receives morning news audio
+```
 
+---
 
-**Key technical concepts used:**
+# 💡 Key Technical Concepts Used
+
 - API Integration — Gemini, Groq, NewsAPI, Telegram Bot API
 - NLP / Embeddings — semantic deduplication
 - LLM Prompting — structured prompt engineering
@@ -144,6 +215,6 @@ User receives morning news audio
 
 ---
 
-## 👤 Author
-~~Biseswar Mohapatra
+# 👤 Author
 
+## Biseswar Mohapatra
