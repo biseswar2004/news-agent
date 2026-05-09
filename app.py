@@ -39,13 +39,25 @@ def logs():
 # API ROUTES (called by JavaScript)
 @app.route("/api/run", methods=["POST"])
 def run_now():
-    try:
-        from main import run_briefing
-        run_briefing()
-        return jsonify({"status": "success",
-                        "message": "Briefing done! Check Telegram."})
-    except Exception as e:
-        return jsonify({"status": "error", "message": str(e)}), 500
+    import threading
+    from main import run_briefing
+
+    def run_in_background():
+        try:
+            run_briefing()
+        except Exception as e:
+            print(f"Background briefing error: {e}")
+
+    # Start briefing in background thread
+    # Returns immediately — doesn't wait for it to finish
+    thread = threading.Thread(target=run_in_background)
+    thread.daemon = True
+    thread.start()
+
+    return jsonify({
+        "status": "success",
+        "message": "Briefing started! Check your Telegram in 2-3 minutes."
+    })
 
 @app.route("/api/save-settings", methods=["POST"])
 def save_settings():

@@ -27,25 +27,40 @@ async function runNow() {
 
   btn.disabled = true;
   icon.innerHTML = '<span class="spinner"></span>';
-  text.textContent = "Running...";
-  showToast("⚡ Generating your briefing...", "");
+  text.textContent = "Starting...";
 
   try {
     const res = await fetch("/api/run", { method: "POST" });
     const data = await res.json();
+
     if (data.status === "success") {
-      showToast("✓ Briefing ready! Check Telegram.", "success");
-      setTimeout(() => location.reload(), 2000);
+      // Show success immediately — don't wait
+      icon.textContent = "✓";
+      text.textContent = "Running in background!";
+      showToast("⚡ Briefing running! Check Telegram in 2-3 min.", "success");
+
+      // Reload page after 3 minutes to show result
+      setTimeout(() => location.reload(), 180000);
+
+      // Re-enable button after 10 seconds
+      setTimeout(() => {
+        btn.disabled = false;
+        icon.textContent = "⚡";
+        text.textContent = "Run Briefing";
+      }, 10000);
+
     } else {
       showToast("✗ " + data.message, "error");
+      btn.disabled = false;
+      icon.textContent = "⚡";
+      text.textContent = "Run Briefing";
     }
   } catch(e) {
     showToast("✗ Network error", "error");
+    btn.disabled = false;
+    icon.textContent = "⚡";
+    text.textContent = "Run Briefing";
   }
-
-  btn.disabled = false;
-  icon.textContent = "⚡";
-  text.textContent = "Run Briefing";
 }
 
 async function saveSettings() {
