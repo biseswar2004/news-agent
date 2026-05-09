@@ -862,3 +862,177 @@ body {
   cursor: pointer;
 }
 .back-to-top:hover { color: var(--teal); }
+
+/* ============================================
+   MOBILE RESPONSIVE — works on all phones
+   ============================================ */
+
+@media (max-width: 768px) {
+
+  /* TOPBAR */
+  .topbar {
+    padding: .3rem 1rem;
+    font-size: .6rem;
+  }
+  .topbar-right { display: none; }
+
+  /* MASTHEAD */
+  .masthead { padding: .8rem 1rem .6rem; }
+  .masthead-title { font-size: 2rem; }
+  .masthead-sub { font-size: .65rem; }
+
+  /* NAVBAR */
+  .navbar {
+    padding: 0 1rem;
+    height: auto;
+    flex-wrap: wrap;
+    gap: .5rem;
+    padding: .6rem 1rem;
+  }
+  .nav-brand .name { font-size: 1.2rem; }
+  .nav-links {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: .3rem;
+    gap: 0;
+    -webkit-overflow-scrolling: touch;
+  }
+  .nav-link {
+    font-size: .72rem;
+    padding: .35rem .7rem;
+    white-space: nowrap;
+  }
+  .run-btn {
+    font-size: .72rem;
+    padding: .4rem .8rem;
+  }
+
+  /* TICKER */
+  .ticker { padding: .5rem 1rem; font-size: .7rem; }
+  .ticker-live { display: none; }
+
+  /* PAGE WRAPPER */
+  .page-wrapper { padding: 1rem 1rem; }
+
+  /* HERO — stack vertically on mobile */
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .hero-headline { font-size: 1.5rem; }
+  .hero-standfirst { font-size: .82rem; }
+  .hero-img { display: none; }
+
+  /* STATS — 2 columns on mobile */
+  .stats-row {
+    grid-template-columns: 1fr 1fr;
+    gap: .6rem;
+  }
+  .stats { grid-template-columns: 1fr 1fr; gap: .6rem; }
+  .stat-num { font-size: 1.4rem; }
+
+  /* AUDIO CARD */
+  .audio-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .8rem;
+    padding: 1rem;
+  }
+
+  /* SECTION HEADING */
+  .section-heading { font-size: 1.1rem; }
+
+  /* HISTORY — single column */
+  .history-grid { grid-template-columns: 1fr; }
+
+  /* SETTINGS — single column */
+  .settings-grid { grid-template-columns: 1fr; }
+  .form-group.full { grid-column: 1; }
+
+  /* SCRIPT BOX */
+  .script-box { font-size: .78rem; max-height: 220px; }
+
+  /* CARDS */
+  .card { padding: 1rem; }
+  .card-header { flex-wrap: wrap; gap: .5rem; }
+
+  /* HERO CARD */
+  .hero-card {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .hero-content { padding: 1.5rem 1.2rem; }
+  .hero-title { font-size: 1.4rem; }
+
+  /* SOURCES BLOCK */
+  .sources-block { padding: .8rem; }
+
+  /* FOOTER */
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 2rem 1rem 1.5rem;
+  }
+  .footer-bottom {
+    padding: 1rem;
+    flex-direction: column;
+    gap: .5rem;
+    text-align: center;
+  }
+  .footer-social { flex-wrap: wrap; }
+
+  /* TOAST */
+  .toast {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+    min-width: unset;
+  }
+
+  /* LOG ITEMS */
+  .log-item { flex-wrap: wrap; gap: .4rem; }
+  .log-date { width: 100%; }
+
+  /* BADGES — smaller on mobile */
+  .badge { font-size: .6rem; padding: .15rem .5rem; }
+
+  /* EMPTY STATE */
+  .empty-state { padding: 3rem 1rem; }
+  .empty-num { font-size: 3.5rem; }
+
+  /* SCRIPT SECTION */
+  .script-section { margin-bottom: 1.5rem; }
+  .script-header { padding: .7rem 1rem; flex-wrap: wrap; gap: .5rem; }
+
+  /* SETTINGS CARD */
+  .settings-card-body { padding: 1rem; }
+
+}
+
+/* EXTRA SMALL — very small phones like 360px */
+@media (max-width: 400px) {
+
+  .masthead-title { font-size: 1.6rem; }
+  .hero-headline { font-size: 1.2rem; }
+  .stats-row { grid-template-columns: 1fr 1fr; }
+  .stats { grid-template-columns: 1fr 1fr; }
+  .nav-link { font-size: .68rem; padding: .3rem .5rem; }
+  .footer-name { font-size: 1.2rem; }
+
+}
+
+/* TABLET — iPad etc */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  .page-wrapper { padding: 1.5rem; }
+  .hero { grid-template-columns: 1fr 300px; gap: 1.5rem; }
+  .hero-headline { font-size: 1.8rem; }
+  .stats-row { grid-template-columns: repeat(4, 1fr); }
+  .stats { grid-template-columns: repeat(4, 1fr); }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .history-grid { grid-template-columns: 1fr; }
+  .settings-grid { grid-template-columns: 1fr; }
+  .form-group.full { grid-column: 1; }
+
+}
