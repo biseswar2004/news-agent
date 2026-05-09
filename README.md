@@ -57,30 +57,27 @@
 
 ```text
 news-agent/
-├── app.py
-├── main.py
-├── scraper.py
-├── summariser.py
-├── tts.py
-├── delivery.py
-├── scheduler.py
-├── database.py
-│
-├── templates/
-│   ├── base.html
-│   ├── index.html
-│   ├── history.html
-│   ├── settings.html
-│   └── logs.html
-│
+├── app.py              # Flask web server — all routes
+├── main.py             # Master pipeline runner
+├── scraper.py          # Fetches news from RSS + NewsAPI
+├── summariser.py       # Gemini/Groq AI script generator
+├── tts.py              # Text to speech MP3 converter
+├── delivery.py         # Telegram bot delivery
+├── scheduler.py        # Daily 7AM auto-scheduler
+├── database.py         # SQLite database models + queries
+├── templates/          # HTML pages
+│   ├── base.html       # Shared layout + navbar + footer
+│   ├── index.html      # Dashboard — today's briefing
+│   ├── history.html    # All past briefings
+│   ├── settings.html   # User preferences
+│   └── logs.html       # Agent run logs
 ├── static/
-│   ├── css/style.css
-│   └── js/main.js
-│
-├── audio/
-├── .env
-├── requirements.txt
-└── Procfile
+│   ├── css/style.css   # Full dashboard styling
+│   └── js/main.js      # JavaScript — run, save, copy
+├── audio/              # Generated MP3 files
+├── .env                # API keys (never upload this)
+├── requirements.txt    # Python dependencies
+└── Procfile            # Render deployment config
 ```
 
 ---
