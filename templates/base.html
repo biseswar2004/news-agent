@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The News Agent</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <span class="topbar-date" id="topbarDate"></span>
+  <div class="topbar-right">
+    <span id="topbarStatus">● Live</span>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-brand">
+    <span class="the">The</span>
+    <span class="name">NEWS <span class="agent">AGENT</span></span>
+  </div>
+
+  <div class="nav-links">
+    <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">
+      Dashboard
+    </a>
+    <a href="/history" class="nav-link {% if request.path == '/history' %}active{% endif %}">
+      History
+    </a>
+    <a href="/settings" class="nav-link {% if request.path == '/settings' %}active{% endif %}">
+      Settings
+    </a>
+    <a href="/logs" class="nav-link {% if request.path == '/logs' %}active{% endif %}">
+      Logs
+    </a>
+  </div>
+
+  <div class="nav-right">
+    <button class="run-btn" id="runBtn" onclick="runNow()">
+      <span id="runIcon">⚡</span>
+      <span id="runText">Run Briefing</span>
+    </button>
+  </div>
+</nav>
+
+{% block content %}{% endblock %}
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand-col">
+      <div class="footer-logo">
+        <span class="footer-the">The</span>
+        <span class="footer-name">NEWS AGENT</span>
+      </div>
+      <p class="footer-tagline">Your personalised AI morning briefing — delivered daily.</p>
+      <div class="footer-social">
+        <span class="footer-social-label">Follow us:</span>
+        <a class="social-btn" href="#">𝕏</a>
+        <a class="social-btn" href="#">in</a>
+        <a class="social-btn" href="#">📷</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <div class="footer-col-title">Navigation</div>
+      <a href="/" class="footer-link">Dashboard</a>
+      <a href="/history" class="footer-link">History</a>
+      <a href="/settings" class="footer-link">Settings</a>
+      <a href="/logs" class="footer-link">Logs</a>
+    </div>
+
+    <div class="footer-col">
+      <div class="footer-col-title">Powered By</div>
+      <span class="footer-link">Gemini AI</span>
+      <span class="footer-link">Groq Llama 3</span>
+      <span class="footer-link">Google TTS</span>
+      <span class="footer-link">Flask + Python</span>
+      <span class="footer-link">SQLite</span>
+    </div>
+
+    <div class="footer-col">
+      <div class="footer-col-title">News Sources</div>
+      <span class="footer-link">BBC News</span>
+      <span class="footer-link">TechCrunch</span>
+      <span class="footer-link">The Verge</span>
+      <span class="footer-link">Times of India</span>
+      <span class="footer-link">NDTV</span>
+    </div>
+  </div>
+
+  <div class="footer-divider"></div>
+
+  <div class="footer-bottom">
+    <span>© 2026 The News Agent · Built by Biseswar Mohapatra</span>
+    <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" class="back-to-top">
+      Back to top ↑
+    </a>
+  </div>
+</footer>
+<div class="toast" id="toast"></div>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

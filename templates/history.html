@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="ticker-banner">
+  <span class="ticker-label">📜 History</span>
+  <span class="ticker-text">All your past morning briefings — {{ briefings|length }} total</span>
+</div>
+
+<div class="page-wrapper">
+  <div class="section-heading">
+    Past Briefings
+    <span class="count">{{ briefings|length }} total</span>
+  </div>
+
+  {% if briefings %}
+  <div class="history-grid">
+    {% for b in briefings %}
+    <div class="history-card">
+      <div class="history-header" onclick="toggleCard('card-{{ b.id }}')">
+        <div class="history-date">
+          📅 {{ b.date }}
+          <span class="history-topics">{{ b.topics_used }}</span>
+        </div>
+        <span class="badge gray">{{ b.articles_count }} articles</span>
+      </div>
+      <div class="history-body" id="card-{{ b.id }}">
+        {% if b.audio_path %}
+        <audio controls class="audio-player" style="margin-bottom:.8rem;width:100%">
+          <source src="/api/audio/{{ b.audio_path }}" type="audio/mpeg"/>
+        </audio>
+        {% endif %}
+        <div class="script-box" style="max-height:180px">{{ b.script }}</div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% else %}
+  <div class="empty-state">
+    <span class="empty-icon">📭</span>
+    <h2>No History Yet</h2>
+    <p>Your briefings will appear here after you run them.</p>
+    <button class="btn-primary" onclick="window.location='/'">← Go to Dashboard</button>
+  </div>
+  {% endif %}
+
+</div>
+{% endblock %}

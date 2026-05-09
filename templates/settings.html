@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="ticker-banner">
+  <span class="ticker-label">⚙️ Settings</span>
+  <span class="ticker-text">Customise your personalised morning news briefing</span>
+</div>
+
+<div class="page-wrapper">
+  <div class="section-heading">Settings</div>
+
+  <div class="settings-card">
+    <div class="settings-card-head">👤 Personal Preferences</div>
+    <div class="settings-card-body">
+      <div class="settings-grid">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" id="name" value="{{ prefs.name }}"
+                 placeholder="Enter your name"/>
+          <span class="form-hint">Used in the briefing greeting</span>
+        </div>
+        <div class="form-group">
+          <label>Delivery Time</label>
+          <select id="deliveryTime">
+            <option>6:00 AM</option>
+            <option>6:30 AM</option>
+            <option selected>7:00 AM</option>
+            <option>7:30 AM</option>
+            <option>8:00 AM</option>
+          </select>
+          <span class="form-hint">Daily automatic delivery time</span>
+        </div>
+        <div class="form-group full">
+          <label>Your Topics</label>
+          <input type="text" id="topics" value="{{ prefs.topics }}"
+                 placeholder="AI, cricket, India tech, startups"/>
+          <span class="form-hint">Comma separated — these are prioritised in every briefing</span>
+        </div>
+        <div class="form-group full">
+          <label>Telegram Chat ID</label>
+          <input type="text" id="telegramId" value="{{ prefs.telegram_id }}"
+                 placeholder="Your Telegram Chat ID number"/>
+          <span class="form-hint">Open Telegram → search @userinfobot → send /start → copy the ID</span>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;margin-top:1rem">
+        <button class="btn-primary" onclick="saveSettings()">💾 Save Settings</button>
+        <span id="saveStatus" style="font-size:.78rem;color:#10b981;font-weight:500"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="settings-card">
+    <div class="settings-card-head">ℹ️ How It Works</div>
+    <div class="settings-card-body">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;text-align:center">
+        <div>
+          <div style="font-size:2rem;margin-bottom:.6rem">📡</div>
+          <div style="font-weight:600;font-size:.85rem;margin-bottom:.3rem">Fetches News</div>
+          <div style="font-size:.75rem;color:var(--muted)">Reads 5+ news sources every morning automatically</div>
+        </div>
+        <div>
+          <div style="font-size:2rem;margin-bottom:.6rem">🤖</div>
+          <div style="font-weight:600;font-size:.85rem;margin-bottom:.3rem">AI Writes Script</div>
+          <div style="font-size:.75rem;color:var(--muted)">Gemini AI personalises the briefing for your topics</div>
+        </div>
+        <div>
+          <div style="font-size:2rem;margin-bottom:.6rem">📲</div>
+          <div style="font-weight:600;font-size:.85rem;margin-bottom:.3rem">Delivers Audio</div>
+          <div style="font-size:.75rem;color:var(--muted)">MP3 sent to your Telegram before you wake up</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

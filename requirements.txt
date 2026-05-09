@@ -1,0 +1,11 @@
+flask
+feedparser
+newsapi-python
+google-generativeai
+groq
+sentence-transformers
+gtts
+python-dotenv
+apscheduler
+requests
+sqlalchemy

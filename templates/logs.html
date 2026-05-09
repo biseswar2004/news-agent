@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="ticker-banner">
+  <span class="ticker-label">📋 Logs</span>
+  <span class="ticker-text">Every agent run recorded — {{ logs|length }} entries</span>
+</div>
+
+<div class="page-wrapper">
+  <div class="section-heading">
+    Agent Logs
+    <span class="count">{{ logs|length }} runs</span>
+  </div>
+
+  <div class="settings-card">
+    <div class="settings-card-head">📋 Run History</div>
+    <div class="settings-card-body">
+      {% if logs %}
+      <div class="log-list">
+        {% for log in logs %}
+        <div class="log-item {{ log.status }}">
+          <div class="log-dot"></div>
+          <span class="log-date">{{ log.date }}</span>
+          <span class="log-msg">{{ log.message }}</span>
+          {% if log.duration_seconds %}
+          <span class="log-duration">{{ log.duration_seconds }}s</span>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <div style="text-align:center;padding:2rem;color:var(--muted)">
+        No logs yet. Run your first briefing!
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+</div>
+{% endblock %}
